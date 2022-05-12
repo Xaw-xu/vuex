@@ -1,32 +1,26 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <Test></Test>
+      年龄：{{ $store.state.age }} 我的年龄：{{ $store.getters.getAge }}
+      {{$store.state.a.b}}========{{$store.state.b.b}}
+      <button @click="$store.commit('changeAge', 2)">dd</button>
+      <button @click="$store.dispatch('changeAgeAction', 3)">异步修改</button>
+      <hr/>
+      <button @click="$store.commit('a/changeAge', 2)">dd</button>
+      <button @click="$store.dispatch('a/changeAgeAction', 3)">异步修改</button>
+      <hr/>
+      {{$store.state.e.eage}}
     </div>
     <router-view />
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<script>
+import Test from "@/components/test.vue";
+export default {
+  components: {
+    Test,
+  },
+};
+</script>
+<style lang="scss"></style>
